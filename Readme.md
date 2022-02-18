@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Роман Меликов](https://up.htmlacademy.ru/javascript/25/user/1497027).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Нюкало](https://htmlacademy.ru/profile/nyukalopavel).
 
 ---
 
