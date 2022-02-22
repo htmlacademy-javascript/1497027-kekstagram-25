@@ -1,5 +1,4 @@
 const MAX_STRING_LENGTH = 140;
-const stringComment = '';
 
 function randomNumber(min, max) {
   if (min >= max) {
@@ -12,12 +11,9 @@ function randomNumber(min, max) {
 randomNumber(0, 100);
 
 
-function stringLength () {
+function stringLength (stringComment, maxLenght) {
   const string = stringComment.length;
-  if (string > MAX_STRING_LENGTH) {
-    return false;
-  }
-  return true;
+  return string > maxLenght;
 }
 
-stringLength(stringComment, MAX_STRING_LENGTH);
+stringLength('', MAX_STRING_LENGTH);
