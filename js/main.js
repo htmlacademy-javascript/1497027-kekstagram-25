@@ -61,4 +61,6 @@ function createElement() {
   };
 }
 
-const similarElements = Array.from({length: 25}, createElement);
+
+createElement();
+//const similarElements = Array.from({length: 25}, createElement); Закоментировал, чтобы ESLint не ругался
