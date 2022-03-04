@@ -19,6 +19,14 @@ const randomMessage = [
 const names = [
   'Артемий', 'Виктория', 'Иван', 'Алиса', 'Марк', 'Владислав', 'Арина','Кирилл', 'Злата', 'Никита'];
 
+const similarComment = [];
+
+const massive = [];
+
+let numberAtComment = 0;
+
+let numberAtElement = 0;
+
 function randomNumber(min, max) {
   if (min >= max) {
     return false;
@@ -42,25 +50,29 @@ function getRandomArrayElement(elements) {
 
 function createComment() {
   return {
-    id: randomNumber(1, 6),
+    id: numberAtComment,
+    avatar: `img/avatar-${  numberAtComment  }.svg`,
     message: getRandomArrayElement(randomMessage),
-    avatar: `img/avatar-${  randomNumber(1, 6)  }.svg`,
     name: getRandomArrayElement(names)
   };
 }
 
-const similarComment = Array.from({length: 6}, createComment);
+for (let i = 0; i < 6; i++) {
+  numberAtComment += 1;
+  similarComment.push(createComment());
+}
 
 function createElement() {
   return {
-    id: randomNumber(1, 25),
-    url: `photos/${  randomNumber(1, 25)  }.jpg`,
+    id: numberAtElement,
+    url: `photos/${  numberAtElement  }.jpg`,
     description: getRandomArrayElement(description),
     likes: randomNumber(15, 200),
     comments: getRandomArrayElement(similarComment)
   };
 }
 
-
-createElement();
-//const similarElements = Array.from({length: 25}, createElement); Закоментировал, чтобы ESLint не ругался
+for (let i = 0; i < 25; i++) {
+  numberAtElement += 1;
+  massive.push(createElement());
+}
