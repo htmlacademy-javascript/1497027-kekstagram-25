@@ -16,8 +16,7 @@ const randomMessage = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.'
 ];
 
-const names = [
-  'Артемий', 'Виктория', 'Иван', 'Алиса', 'Марк', 'Владислав', 'Арина','Кирилл', 'Злата', 'Никита'];
+const names = ['Артемий', 'Виктория', 'Иван', 'Алиса', 'Марк', 'Владислав', 'Арина','Кирилл', 'Злата', 'Никита'];
 
 const similarComment = [];
 
@@ -47,7 +46,7 @@ function createElement() {
     url: `photos/${  numberAtElement  }.jpg`,
     description: getRandomArrayElement(description),
     likes: randomNumber(15, 200),
-    comments: getRandomArrayElement(similarComment)
+    comments: getRandomArrayElement(similarComment),
   };
 }
 
@@ -55,3 +54,4 @@ for (let i = 0; i < 25; i++) {
   numberAtElement += 1;
   massive.push(createElement());
 }
+export {massive};
