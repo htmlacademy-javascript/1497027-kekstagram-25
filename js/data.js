@@ -46,7 +46,7 @@ function createElement() {
     url: `photos/${  numberAtElement  }.jpg`,
     description: getRandomArrayElement(description),
     likes: randomNumber(15, 200),
-    comments: getRandomArrayElement(similarComment),
+    comments: similarComment,
   };
 }
 
@@ -54,4 +54,4 @@ for (let i = 0; i < 25; i++) {
   numberAtElement += 1;
   massive.push(createElement());
 }
-export {massive};
+export {massive, similarComment};
