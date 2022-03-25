@@ -20,4 +20,21 @@ function stringLength (stringComment, maxLenght) {
 
 stringLength('', MAX_STRING_LENGTH);
 
-export {getRandomArrayElement, randomNumber};
+function checkHeshtah(currentValue) {
+  const re = /^#[A-Za-zA-Яа-яЁё0-9]{1,19}$/;
+  return re.test(currentValue);
+}
+
+function checkUniqueHeshtah (heshtah) {
+  const n = heshtah.length;
+  for (let i = 0; i < n-1; i++) {
+    for (let j = i+1; j < n; j++) {
+      if (heshtah[ i ] === heshtah[j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+export {getRandomArrayElement, randomNumber, checkHeshtah, checkUniqueHeshtah};
