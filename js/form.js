@@ -10,28 +10,19 @@ const pristine = new Pristine(form, {
 
 function checkLengthHeshtah (value) {
   const newString = value.split(' ');
-  if (newString.length <= 5) {
-    return true;
-  }
-  return false;
+  return newString.length <= 5;
 }
 
 function checkCorrectHeshtah (value) {
   const newString = value.split(' ');
   const currentHeshtag = newString.every(checkHeshtah);
-  if (currentHeshtag === true) {
-    return true;
-  }
-  return false;
+  return currentHeshtag === true;
 }
 
 function checkDoubleHeshtah (value) {
   const newString = value.split(' ');
   const double = checkUniqueHeshtah(newString);
-  if (double === true) {
-    return true;
-  }
-  return false;
+  return double === true;
 }
 
 pristine.addValidator(
