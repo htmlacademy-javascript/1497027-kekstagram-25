@@ -33,6 +33,7 @@ for (let i = 0; i < effectBtn.length; i++) {
     if (effectBtn[0].checked) {
       sliderElement.setAttribute('disabled', true);
       sliderElement.style.display = 'none';
+      userImg.style.filter = null;
     } else {
       sliderElement.style.display = null;
     }
