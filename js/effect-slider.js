@@ -27,7 +27,7 @@ sliderElement.noUiSlider.on('update', () => {
 
 function removeAttrDis () {
   sliderElement.removeAttribute('disabled', true);
-  sliderElement.style.display = null;
+  sliderElement.style.display = 'block';
 }
 
 function updateSlider (minValue, maxValue, stepValue) {
