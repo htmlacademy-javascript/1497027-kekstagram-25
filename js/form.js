@@ -43,7 +43,6 @@ pristine.addValidator(
   'Один и тот же хэш-тег не может быть использован дважды'
 );
 
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+form.addEventListener('submit', () => {
   pristine.validate();
 });
