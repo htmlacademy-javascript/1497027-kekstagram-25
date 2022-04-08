@@ -13,7 +13,7 @@ fetch('https://25.javascript.pages.academy/kekstagram/data')
 
 function sendData (onSuccess, onFail, body)  {
   fetch(
-    'https://25.javascript.pages.academ/kekstagram',
+    'https://25.javascript.pages.academy/kekstagram',
     {
       method: 'POST',
       body,
