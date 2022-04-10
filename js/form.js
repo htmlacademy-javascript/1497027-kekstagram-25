@@ -1,4 +1,7 @@
-import {checkHeshtah, checkUniqueHeshtah} from './util.js';
+import {checkHeshtah, checkUniqueHeshtah, blockSubmitButton, unblockSubmitButton} from './util.js';
+import {closeUserModal} from './open-form.js';
+import {sendData} from './server-data.js';
+import {succesLoad, errorLoad} from './popup-form.js';
 
 const form = document.querySelector('.img-upload__form');
 
@@ -16,11 +19,15 @@ function checkLengthHeshtah (value) {
 function checkCorrectHeshtah (value) {
   const newString = value.split(' ');
   const currentHeshtag = newString.every(checkHeshtah);
-  return currentHeshtag === true;
+  if (currentHeshtag === true || value.length === 0) {
+    return true;
+  }
+  return false;
 }
 
 function checkDoubleHeshtah (value) {
-  const newString = value.split(' ');
+  const lowerCaseValue = value.toLowerCase();
+  const newString = lowerCaseValue.split(' ');
   const double = checkUniqueHeshtah(newString);
   return double === true;
 }
@@ -43,6 +50,25 @@ pristine.addValidator(
   'Один и тот же хэш-тег не может быть использован дважды'
 );
 
-form.addEventListener('submit', () => {
-  pristine.validate();
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  const isValid = pristine.validate();
+  if (isValid) {
+    blockSubmitButton();
+    sendData (
+      () => {
+        unblockSubmitButton();
+        closeUserModal();
+        succesLoad();
+      },
+      () => {
+        unblockSubmitButton();
+        closeUserModal();
+        errorLoad();
+      },
+      new FormData(evt.target),
+    );
+  }
 });

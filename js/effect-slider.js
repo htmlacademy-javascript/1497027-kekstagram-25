@@ -44,8 +44,8 @@ function updateSlider (minValue, maxValue, stepValue) {
 sliderElement.setAttribute('disabled', true);
 sliderElement.style.display = 'none';
 
-effectsBtn.addEventListener('change', (event) => {
-  const elemId = event.target.id;
+effectsBtn.addEventListener('change', (evt) => {
+  const elemId = evt.target.id;
   switch (elemId) {
     case 'effect-chrome':
       userImg.className = 'effects__preview--chrome';
