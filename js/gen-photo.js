@@ -8,6 +8,7 @@ function renderSimilarList(massive) {
 
   function genMassiveData(photoItem) {
     const photoItemElement = similarElemTemplate.cloneNode(true);
+    photoItemElement.querySelector('.picture').setAttribute('id', photoItem.id);
     photoItemElement.querySelector('.picture__likes').textContent = photoItem.likes;
     photoItemElement.querySelector('.picture__img').src = photoItem.url;
     photoItemElement.querySelector('.picture__comments').textContent = photoItem.comments.length;
