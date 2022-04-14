@@ -3,6 +3,7 @@ const userPictures = document.querySelector('.pictures');
 const closeBigPicture = document.querySelector('.big-picture__cancel');
 const similarElemTemplate = document.querySelector('.social__comment');
 const similarListElement = document.querySelector('.social__comments');
+const btnRenderMoreComments = document.querySelector('.social__comments-loader');
 
 function onPhotoEscKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -17,22 +18,20 @@ function openBigPicture (value) {
     if (currentElem) {
       document.querySelector('.big-picture').classList.remove('hidden');
       document.querySelector('body').classList.add('modal-open');
-      document.querySelector('.comments-loader').classList.add('hidden');
-      document.querySelector('.social__comment-count').classList.add('hidden');
       const currentUserPhoto = value.find((item) => item.id === Number(currentElem.id));
       renderPhoto(currentUserPhoto);
-      renderComments(currentUserPhoto.comments);
+      const cloneArr = currentUserPhoto.comments.slice(0);
+      renderComments(cloneArr);
 
       document.addEventListener('keydown', onPhotoEscKeydown);
     }
-
   });
 }
 
-function renderComments (massiveComments) {
+function renderCommments (data) {
   const similarListFragment = document.createDocumentFragment();
 
-  massiveComments.forEach((item) => genMassiveCom(item));
+  data.forEach((item) => genMassiveCom(item));
 
   function genMassiveCom(item) {
     const elem = similarElemTemplate.cloneNode(true);
@@ -42,8 +41,18 @@ function renderComments (massiveComments) {
     similarListFragment.append(elem);
   }
 
-  similarListElement.innerHTML = '';
   similarListElement.append(similarListFragment);
+}
+
+function renderComments (commentData) {
+  similarListElement.innerHTML = '';
+
+  renderCommments(commentData.splice(0, 5));
+
+  btnRenderMoreComments.addEventListener('click', () => {
+    const arrComments = commentData.splice(0, 5);
+    renderCommments(arrComments);
+  });
 }
 
 function renderPhoto (item) {
