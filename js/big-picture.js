@@ -21,7 +21,7 @@ function openBigPicture (value) {
       const currentUserPhoto = value.find((item) => item.id === Number(currentElem.id));
       renderPhoto(currentUserPhoto);
       const cloneArr = currentUserPhoto.comments.slice(0);
-      renderComments(cloneArr);
+      showComments(cloneArr);
 
       document.addEventListener('keydown', onPhotoEscKeydown);
     }
@@ -44,7 +44,7 @@ function renderCommments (data) {
   similarListElement.append(similarListFragment);
 }
 
-function renderComments (commentData) {
+function showComments (commentData) {
   similarListElement.innerHTML = '';
 
   renderCommments(commentData.splice(0, 5));
