@@ -1,7 +1,9 @@
-import {userImg} from './effect-slider.js';
+import {userImg, sliderElement} from './effect-slider.js';
+import {btnSizeElem} from './set-scale-img.js';
 
 const closeForm = document.querySelector('.img-upload__cancel');
 const openForm= document.querySelector('.img-upload__input');
+const defaultCheckbox = document.querySelector('#effect-none');
 
 function onFormEscKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -21,12 +23,21 @@ function closeUserModal () {
   document.querySelector('.img-upload__overlay').classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   document.querySelector('.text__hashtags').value = '';
+  returnDefaultSetPh();
   openForm.value = '';
-  userImg.style.transform = 'scale(1)';
 
   document.removeEventListener('keydown', onFormEscKeydown);
 }
 
+
+function returnDefaultSetPh () {
+  userImg.style.transform = 'scale(1)';
+  userImg.style.filter = '';
+  userImg.className = '';
+  sliderElement.style.display = 'none';
+  btnSizeElem.value = '100%';
+  defaultCheckbox.checked = true;
+}
 
 openForm.addEventListener('change', () => {
   openUserModal();

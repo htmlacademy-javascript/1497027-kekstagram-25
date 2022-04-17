@@ -94,4 +94,4 @@ effectsBtn.addEventListener('change', (evt) => {
   }
 });
 
-export {userImg};
+export {userImg, sliderElement};

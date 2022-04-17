@@ -18,3 +18,5 @@ btnPlus.addEventListener('click', () => {
     userImg.style.transform = `scale(${  btnSizeElem.value})`;
   }
 });
+
+export {btnSizeElem};
