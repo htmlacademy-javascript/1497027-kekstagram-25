@@ -1,4 +1,4 @@
-import {userImg} from './effect-slider.js';
+import {userImg, sliderElement} from './effect-slider.js';
 
 const closeForm = document.querySelector('.img-upload__cancel');
 const openForm= document.querySelector('.img-upload__input');
@@ -21,12 +21,19 @@ function closeUserModal () {
   document.querySelector('.img-upload__overlay').classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   document.querySelector('.text__hashtags').value = '';
+  returnDefaultSetPh();
   openForm.value = '';
-  userImg.style.transform = 'scale(1)';
 
   document.removeEventListener('keydown', onFormEscKeydown);
 }
 
+
+function returnDefaultSetPh () {
+  userImg.style.transform = 'scale(1)';
+  userImg.style.filter = '';
+  userImg.className = '';
+  sliderElement.style.display = 'none';
+}
 
 openForm.addEventListener('change', () => {
   openUserModal();
