@@ -1,7 +1,9 @@
 import {userImg, sliderElement} from './effect-slider.js';
+import {btnSizeElem} from './set-scale-img.js';
 
 const closeForm = document.querySelector('.img-upload__cancel');
 const openForm= document.querySelector('.img-upload__input');
+const defaultCheckbox = document.querySelector('#effect-none');
 
 function onFormEscKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -33,6 +35,8 @@ function returnDefaultSetPh () {
   userImg.style.filter = '';
   userImg.className = '';
   sliderElement.style.display = 'none';
+  btnSizeElem.value = '100%';
+  defaultCheckbox.checked = true;
 }
 
 openForm.addEventListener('change', () => {
