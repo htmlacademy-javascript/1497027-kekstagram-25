@@ -3,11 +3,15 @@ import {btnSizeElem} from './set-scale-img.js';
 
 const closeForm = document.querySelector('.img-upload__cancel');
 const openForm= document.querySelector('.img-upload__input');
+const commentField = document.querySelector('.text__description');
 const defaultCheckbox = document.querySelector('#effect-none');
 
 function onFormEscKeydown (evt) {
   if (evt.key === 'Escape') {
     evt.preventDefault();
+    if (evt.target.closest('.text__description') || evt.target.closest('.text__hashtags')) {
+      return false;
+    }
     closeUserModal();
   }
 }
@@ -25,6 +29,7 @@ function closeUserModal () {
   document.querySelector('.text__hashtags').value = '';
   returnDefaultSetPh();
   openForm.value = '';
+  commentField.value = '';
 
   document.removeEventListener('keydown', onFormEscKeydown);
 }
