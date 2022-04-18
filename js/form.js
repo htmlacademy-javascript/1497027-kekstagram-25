@@ -12,14 +12,14 @@ const pristine = new Pristine(form, {
 });
 
 function checkLengthHeshtah (value) {
-  const newString = value.split(' ');
-  return newString.length <= 5;
+  const newStringComments = value.split(' ');
+  return newStringComments.length <= 5;
 }
 
 function checkCorrectHeshtah (value) {
-  const newString = value.split(' ');
-  const currentHeshtag = newString.every(checkHeshtah);
-  if (currentHeshtag === true || value.length === 0) {
+  const newStringComments = value.split(' ');
+  const currentHeshtag = newStringComments.every(checkHeshtah);
+  if (currentHeshtag || value.length === 0) {
     return true;
   }
   return false;
@@ -27,9 +27,8 @@ function checkCorrectHeshtah (value) {
 
 function checkDoubleHeshtah (value) {
   const lowerCaseValue = value.toLowerCase();
-  const newString = lowerCaseValue.split(' ');
-  const double = checkUniqueHeshtah(newString);
-  return double === true;
+  const newStringComments = lowerCaseValue.split(' ');
+  return checkUniqueHeshtah(newStringComments);
 }
 
 pristine.addValidator(

@@ -1,11 +1,12 @@
 
+const COUNT= 5;
+const DEFAULT_COUNT = 0;
 const userPictures = document.querySelector('.pictures');
 const closeBigPicture = document.querySelector('.big-picture__cancel');
 const similarElemTemplate = document.querySelector('.social__comment');
 const similarListElement = document.querySelector('.social__comments');
 const btnRenderMoreComments = document.querySelector('.social__comments-loader');
 let step = 0;
-const count = 5;
 let comments;
 
 function onPhotoEscKeydown (evt) {
@@ -57,8 +58,8 @@ function showComments () {
 }
 
 function addNewComment () {
-  renderCommments(comments.slice(step, step + count));
-  step += 5;
+  renderCommments(comments.slice(step, step + COUNT));
+  step += COUNT;
 }
 
 function updateNumberComments () {
@@ -82,7 +83,7 @@ function closePhotoModal () {
   document.querySelector('body').classList.remove('modal-open');
   document.removeEventListener('keydown', onPhotoEscKeydown);
   btnRenderMoreComments.removeEventListener('click', addNewComment);
-  step = 0;
+  step = DEFAULT_COUNT;
   btnRenderMoreComments.classList.remove('hidden');
 }
 
